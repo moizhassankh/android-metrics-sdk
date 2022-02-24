@@ -25,7 +25,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         app:layoutManager="LinearLayoutManager"
-        tools:context="ai.promoted.RestaurantListActivity"
+        tools:context="ai.benshi.RestaurantListActivity"
         tools:listitem="@layout/restaurant_list_content" />
 
     <FrameLayout

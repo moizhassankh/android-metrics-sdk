@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ai.promoted">
+    package="ai.benshi">
 
     <!-- For Firebase integration -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
-        android:name=".ExampleApplication"
+        android:name="ai.benshi.ExampleApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -15,20 +15,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PromotedAi">
         <activity
-            android:name=".RestaurantListActivity"
+            android:name="ai.benshi.RestaurantListActivity"
             android:label="@string/title_restaurant_list"
             android:theme="@style/Theme.PromotedAi.NoActionBar" />
         <activity
-            android:name=".RestaurantDetailActivity"
+            android:name="ai.benshi.RestaurantDetailActivity"
             android:label="@string/title_restaurant_detail"
-            android:parentActivityName=".RestaurantListActivity"
+            android:parentActivityName="ai.benshi.RestaurantListActivity"
             android:theme="@style/Theme.PromotedAi.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="ai.promoted.RestaurantListActivity" />
+                android:value="ai.benshi.RestaurantListActivity" />
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name="ai.benshi.MainActivity"
             android:theme="@style/Theme.PromotedAi.FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
