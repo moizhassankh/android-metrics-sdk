@@ -5,10 +5,8 @@ import ai.benshi.di.ConfigurableKoinComponent
 import ai.benshi.sdk.NoOpSdk
 import ai.benshi.sdk.PromotedAiSdk
 import ai.benshi.sdk.SdkManager
-import ai.benshi.sdk.UpdateClientConfigUseCase
 import android.app.Application
 import io.mockk.called
-import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
 import org.hamcrest.CoreMatchers.instanceOf

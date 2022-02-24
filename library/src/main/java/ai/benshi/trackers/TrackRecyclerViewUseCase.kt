@@ -1,4 +1,4 @@
-package ai.benshi.metrics.usecases
+package ai.benshi.trackers
 
 import ai.benshi.AbstractContent
 import ai.benshi.ImpressionThreshold

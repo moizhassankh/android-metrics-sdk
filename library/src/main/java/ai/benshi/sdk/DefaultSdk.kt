@@ -2,8 +2,8 @@ package ai.benshi.sdk
 
 import ai.benshi.AbstractContent
 import ai.benshi.ImpressionThreshold
-import ai.benshi.metrics.usecases.TrackCollectionsUseCase
-import ai.benshi.metrics.usecases.TrackRecyclerViewUseCase
+import ai.benshi.trackers.TrackCollectionsUseCase
+import ai.benshi.trackers.TrackRecyclerViewUseCase
 import android.app.Activity
 import androidx.recyclerview.widget.RecyclerView
 

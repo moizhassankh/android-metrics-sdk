@@ -1,16 +1,14 @@
 package ai.benshi.di
 
 import ai.benshi.ClientConfig
-import ai.benshi.metrics.usecases.TrackCollectionsUseCase
-import ai.benshi.metrics.usecases.TrackRecyclerViewUseCase
+import ai.benshi.trackers.TrackCollectionsUseCase
+import ai.benshi.trackers.TrackRecyclerViewUseCase
 import ai.benshi.sdk.DefaultSdk
 import ai.benshi.sdk.PromotedAiSdk
 import android.content.Context
 import android.content.SharedPreferences
 import org.koin.core.module.Module
-import org.koin.core.scope.Scope
 import org.koin.dsl.module
-import java.util.concurrent.TimeUnit
 
 /**
  * The default [ConfigurableKoinComponent] used at runtime of the library. Knows how to provide

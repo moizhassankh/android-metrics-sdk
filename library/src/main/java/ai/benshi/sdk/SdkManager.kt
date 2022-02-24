@@ -16,7 +16,6 @@ import org.koin.core.component.get
  * garbage collection.
  */
 internal open class SdkManager internal constructor(
-    private val updatedConfigUseCase: UpdateClientConfigUseCase = UpdateClientConfigUseCase(),
     private val configurableKoinComponent: ConfigurableKoinComponent = DefaultKoinComponent
 ) {
     internal sealed class SdkState {

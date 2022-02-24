@@ -5,6 +5,7 @@ import ai.benshi.metrics.id.AncestorId
 import ai.benshi.metrics.id.IdGenerator
 import ai.benshi.metrics.id.UuidGenerator
 import ai.benshi.proto.event.Impression
+import ai.benshi.trackers.TrackCollectionsUseCase
 import ai.benshi.xray.NoOpXray
 import com.google.protobuf.Message
 import io.mockk.CapturingSlot
