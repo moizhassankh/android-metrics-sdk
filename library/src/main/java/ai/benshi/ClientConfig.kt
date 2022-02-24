@@ -1,8 +1,5 @@
 package ai.benshi
 
-import ai.benshi.http.RetrofitNetworkConnection
-import ai.benshi.http.RetrofitProvider
-
 /**
  * Represents all of the options a library user has to customize the behavior of the Promoted.Ai
  * SDK.
@@ -40,13 +37,6 @@ data class ClientConfig(
      * Whether the SDK should monitor its own performance and log results to the system log.
      */
     val xrayEnabled: Boolean,
-
-    /**
-     * A function which provides the [NetworkConnection] to be used when sending metrics.
-     * Promoted.Ai will provide a default implementation unless a custom one is provided by the
-     * library user.
-     */
-    val networkConnectionProvider: () -> NetworkConnection,
 ) {
     enum class MetricsLoggingWireFormat {
         Json,
@@ -77,15 +67,7 @@ data class ClientConfig(
         /**
          * @see [ClientConfig.xrayEnabled]
          */
-        var xrayEnabled: Boolean = false,
-        /**
-         * @see [ClientConfig.networkConnectionProvider]
-         */
-        var networkConnectionProvider: () -> NetworkConnection = {
-            RetrofitNetworkConnection(
-                RetrofitProvider()
-            )
-        }
+        var xrayEnabled: Boolean = false
     ) {
         /**
          * Create a [ClientConfig] object from the current state of this builder.
@@ -96,8 +78,7 @@ data class ClientConfig(
             metricsLoggingApiKey,
             metricsLoggingWireFormat,
             loggingFlushIntervalSeconds,
-            xrayEnabled,
-            networkConnectionProvider
+            xrayEnabled
         )
     }
 }

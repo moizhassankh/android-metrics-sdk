@@ -14,12 +14,6 @@ import android.app.Application
 class SdkBuilder internal constructor(
     private val sdkManager: SdkManager
 ) {
-    interface NetworkConnectionProvider {
-        /**
-         * @see [ClientConfig.networkConnectionProvider]
-         */
-        fun provide(): NetworkConnection
-    }
 
     private val clientConfigBuilder = ClientConfig.Builder()
 
@@ -58,12 +52,6 @@ class SdkBuilder internal constructor(
      */
     fun withXrayEnabled(enabled: Boolean) =
         apply { clientConfigBuilder.xrayEnabled = enabled }
-
-    /**
-     * @see [ClientConfig.networkConnectionProvider]
-     */
-    fun withNetworkConnectionProvider(provider: NetworkConnectionProvider) =
-        apply { clientConfigBuilder.networkConnectionProvider = provider::provide }
 
     /**
      * @see [PromotedAi.initialize]

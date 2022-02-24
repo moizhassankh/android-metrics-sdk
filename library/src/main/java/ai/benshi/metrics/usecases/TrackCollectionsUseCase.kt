@@ -99,8 +99,6 @@ internal class TrackCollectionsUseCase{
                 content = newContent
             )
         }
-
-        // Eventually, may iterate over dropped items and log end impressions
     }
 
     private fun onStartImpression(
@@ -109,6 +107,5 @@ internal class TrackCollectionsUseCase{
     ) {
 
         Log.d("impressionData", content.toString())
-//        logger.enqueueMessage(createImpressionMessage(impressionData, internalImpressionData))
     }
 }

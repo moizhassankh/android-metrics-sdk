@@ -1,9 +1,7 @@
 package ai.benshi.metrics.usecases
 
-import ai.benshi.ActionData
 import ai.benshi.platform.Clock
 import ai.benshi.proto.event.ActionType
-import io.mockk.every
 import io.mockk.mockk
 import org.hamcrest.CoreMatchers.equalTo
 import org.hamcrest.CoreMatchers.notNullValue

@@ -1,6 +1,5 @@
 package ai.benshi.networking
 
-import ai.benshi.http.RetrofitProvider
 import junit.framework.Assert.fail
 import kotlinx.coroutines.runBlocking
 import org.hamcrest.CoreMatchers.equalTo
