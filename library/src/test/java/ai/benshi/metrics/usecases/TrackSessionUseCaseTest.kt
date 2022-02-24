@@ -1,12 +1,10 @@
 package ai.benshi.metrics.usecases
 
 import ai.benshi.SystemOutLogger
-import ai.benshi.metrics.MetricsLogger
 import ai.benshi.metrics.id.UuidGenerator
 import ai.benshi.mockkRelaxedUnit
 import ai.benshi.xray.NoOpXray
 import com.google.protobuf.Message
-import io.mockk.every
 import io.mockk.verify
 import org.hamcrest.CoreMatchers.equalTo
 import org.hamcrest.CoreMatchers.not

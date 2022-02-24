@@ -1,6 +1,5 @@
 package ai.benshi.metrics
 
-import ai.benshi.NetworkConnection
 import ai.benshi.PromotedApiRequest
 import ai.benshi.metrics.usecases.FinalizeLogsUseCase
 import ai.benshi.mockkRelaxedUnit

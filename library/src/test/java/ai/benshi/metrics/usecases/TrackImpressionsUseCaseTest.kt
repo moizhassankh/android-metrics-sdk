@@ -1,7 +1,6 @@
 package ai.benshi.metrics.usecases
 
 import ai.benshi.AbstractContent
-import ai.benshi.metrics.MetricsLogger
 import ai.benshi.metrics.id.AncestorId
 import ai.benshi.metrics.id.IdGenerator
 import ai.benshi.metrics.id.UuidGenerator
@@ -9,7 +8,6 @@ import ai.benshi.proto.event.Impression
 import ai.benshi.xray.NoOpXray
 import com.google.protobuf.Message
 import io.mockk.CapturingSlot
-import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
 import kotlinx.coroutines.Dispatchers

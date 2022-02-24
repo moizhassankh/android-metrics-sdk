@@ -1,6 +1,5 @@
 package ai.benshi.metrics.usecases
 
-import ai.benshi.metrics.MetricsLogger
 import ai.benshi.metrics.id.AncestorId
 import ai.benshi.metrics.id.UuidGenerator
 import ai.benshi.mockkRelaxedUnit
@@ -8,7 +7,6 @@ import ai.benshi.proto.event.AutoView
 import ai.benshi.proto.event.View
 import ai.benshi.xray.NoOpXray
 import com.google.protobuf.Message
-import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
 import org.hamcrest.CoreMatchers.equalTo

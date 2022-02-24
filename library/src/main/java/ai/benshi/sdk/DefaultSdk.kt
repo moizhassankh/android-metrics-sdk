@@ -2,7 +2,6 @@ package ai.benshi.sdk
 
 import ai.benshi.AbstractContent
 import ai.benshi.ImpressionThreshold
-import ai.benshi.metrics.MetricsLogger
 import ai.benshi.metrics.usecases.TrackCollectionsUseCase
 import ai.benshi.metrics.usecases.TrackRecyclerViewUseCase
 import android.app.Activity
@@ -14,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView
  */
 @Suppress("TooManyFunctions", "LongParameterList")
 internal class DefaultSdk(
-    private val logger: MetricsLogger,
     private val trackCollectionsUseCase: TrackCollectionsUseCase,
     private val trackRecyclerViewUseCase: TrackRecyclerViewUseCase,
 ) : PromotedAiSdk {
@@ -54,5 +52,5 @@ internal class DefaultSdk(
         recyclerView, currentDataProvider, impressionThreshold
     )
 
-    override fun shutdown() = logger.cancelAndDiscardPendingQueue()
+    override fun shutdown(){}
 }

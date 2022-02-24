@@ -1,7 +1,6 @@
 package ai.benshi.sdk
 
 import ai.benshi.AbstractContent
-import ai.benshi.metrics.MetricsLogger
 import ai.benshi.metrics.usecases.TrackCollectionsUseCase
 import ai.benshi.metrics.usecases.TrackRecyclerViewUseCase
 import ai.benshi.mockkRelaxedUnit

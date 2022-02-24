@@ -1,7 +1,6 @@
 package ai.benshi.di
 
 import ai.benshi.ClientConfig
-import ai.benshi.metrics.MetricsLogger
 import ai.benshi.metrics.usecases.TrackCollectionsUseCase
 import ai.benshi.metrics.usecases.TrackRecyclerViewUseCase
 import ai.benshi.sdk.DefaultSdk
@@ -24,23 +23,14 @@ internal object DefaultKoinComponent : ConfigurableKoinComponent() {
             single<PromotedAiSdk> {
                 DefaultSdk(
                     get(),
-                    get(),
                     get()
                 )
             }
-            single { createMetricsLoggerForConfig() }
             single { TrackCollectionsUseCase() }
             single { TrackRecyclerViewUseCase(get()) }
             factory { getPromotedAiPrefs(get()) }
         }
     )
-
-    private fun Scope.createMetricsLoggerForConfig(): MetricsLogger {
-        val config: ClientConfig = get()
-        val flushIntervalMillis =
-            TimeUnit.SECONDS.toMillis(config.loggingFlushIntervalSeconds)
-        return MetricsLogger(flushIntervalMillis)
-    }
 
     private fun getPromotedAiPrefs(context: Context): SharedPreferences =
         context.getSharedPreferences("ai.promoted.prefs", Context.MODE_PRIVATE)
