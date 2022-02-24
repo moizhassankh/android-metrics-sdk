@@ -55,8 +55,8 @@ class RestaurantListActivity : AppCompatActivity() {
             recyclerView = recyclerView,
             currentDataProvider = {
                 DummyContent.ITEMS.map {
-                    AbstractContent.Content(
-                        name = it.id,
+                    AbstractContent(
+                        name = it.name,
                         contentId = it.id
                     )
                 }

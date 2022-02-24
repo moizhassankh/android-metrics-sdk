@@ -1,7 +1,6 @@
 package ai.benshi.metrics.usecases
 
 import ai.benshi.AbstractContent
-import ai.benshi.ImpressionData
 import ai.benshi.calculation.AsyncCollectionDiffCalculator
 import android.app.Activity
 import android.util.Log
@@ -109,13 +108,7 @@ internal class TrackCollectionsUseCase{
         content: AbstractContent
     ) {
 
-        val impressionData = ImpressionData.Builder().apply {
-            insertionId = content.insertionId
-            contentId = content.contentId
-        }.build(null)
-
-
-        Log.d("impressionData", impressionData.toString())
+        Log.d("impressionData", content.toString())
 //        logger.enqueueMessage(createImpressionMessage(impressionData, internalImpressionData))
     }
 }
