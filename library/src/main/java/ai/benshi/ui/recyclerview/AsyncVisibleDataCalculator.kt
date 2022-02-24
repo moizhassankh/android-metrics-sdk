@@ -1,7 +1,6 @@
 package ai.benshi.ui.recyclerview
 
 import ai.benshi.calculation.AsyncCalculationRunner
-import ai.benshi.platform.Clock
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.Dispatchers
@@ -12,7 +11,7 @@ import kotlinx.coroutines.Dispatchers
  * visible to the user.
  */
 internal class AsyncVisibleDataCalculator<RowData : Any>(
-    clock: Clock,
+    clock: Long,
     recyclerView: RecyclerView,
     layoutManager: LinearLayoutManager,
     threshold: VisibilityThreshold,

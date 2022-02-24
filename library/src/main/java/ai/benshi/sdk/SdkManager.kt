@@ -1,10 +1,8 @@
 package ai.benshi.sdk
 
 import ai.benshi.ClientConfig
-import ai.benshi.config.RemoteConfigServiceFinder
 import ai.benshi.di.ConfigurableKoinComponent
 import ai.benshi.di.DefaultKoinComponent
-import ai.benshi.runtime.ClassFinder
 import android.app.Application
 import org.koin.core.component.get
 
@@ -18,9 +16,7 @@ import org.koin.core.component.get
  * garbage collection.
  */
 internal open class SdkManager internal constructor(
-    private val updatedConfigUseCase: UpdateClientConfigUseCase = UpdateClientConfigUseCase(
-        RemoteConfigServiceFinder(ClassFinder())
-    ),
+    private val updatedConfigUseCase: UpdateClientConfigUseCase = UpdateClientConfigUseCase(),
     private val configurableKoinComponent: ConfigurableKoinComponent = DefaultKoinComponent
 ) {
     internal sealed class SdkState {
@@ -103,19 +99,13 @@ internal open class SdkManager internal constructor(
             is SdkState.Ready -> currentState.sdk.shutdown()
         }
 
-        // Get the latest config w/ any cached remote-config values applied on top
-        val updatedConfig = updatedConfigUseCase.updateClientConfig(baselineConfig)
-
         // Reconfigure Koin to provide dependencies based on the current ClientConfig
-        configurableKoinComponent.configure(application, updatedConfig)
+        configurableKoinComponent.configure(application, baselineConfig)
 
         // Regardless of what PromotedAi type Koin might return, we'll always override that with a
         // no-op version if logging is disabled via config. This is to prevent such critical
         // business logic from residing in the DI configuration
-        val newPromotedAi: PromotedAiSdk = when (updatedConfig.loggingEnabled) {
-            true -> configurableKoinComponent.get()
-            else -> NoOpSdk()
-        }
+        val newPromotedAi: PromotedAiSdk =  configurableKoinComponent.get()
 
         this.sdkState = SdkState.Ready(sdk = newPromotedAi)
     }

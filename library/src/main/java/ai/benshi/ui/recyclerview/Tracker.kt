@@ -1,6 +1,5 @@
 package ai.benshi.ui.recyclerview
 
-import ai.benshi.platform.Clock
 import androidx.core.view.doOnDetach
 import androidx.core.view.doOnLayout
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
  * view disappears.
  */
 internal class Tracker<RowData : Any>(
-    private val clock: Clock,
+    private val clock: Long,
     private val recyclerView: RecyclerView,
     private val visibilityThreshold: VisibilityThreshold,
     private val currentDataProvider: () -> List<RowData>,

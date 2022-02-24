@@ -1,7 +1,6 @@
 package ai.benshi.sdk
 
 import ai.benshi.AbstractContent
-import ai.benshi.AutoViewState
 import ai.benshi.ImpressionThreshold
 import android.app.Activity
 import androidx.recyclerview.widget.RecyclerView
@@ -18,7 +17,6 @@ internal class NoOpSdk : PromotedAiSdk {
         sourceActivity: Activity?,
         collectionViewKey: String,
         content: List<AbstractContent>,
-        autoViewState: AutoViewState?
     ) {
     }
 
@@ -26,14 +24,12 @@ internal class NoOpSdk : PromotedAiSdk {
         sourceActivity: Activity?,
         collectionViewKey: String,
         content: List<AbstractContent>,
-        autoViewState: AutoViewState?
     ) {
     }
 
     override fun onCollectionHidden(
         sourceActivity: Activity?,
         collectionViewKey: String,
-        autoViewState: AutoViewState?
     ) {
     }
 

@@ -17,12 +17,12 @@ import org.koin.core.module.Module
 internal abstract class ConfigurableKoinComponent : KoinComponent {
     protected var startedKoinApplication: KoinApplication? = null
 
-    protected abstract fun buildModules(config: ClientConfig): List<Module>
+    protected abstract fun buildModules(config: ClientConfig?): List<Module>
 
     /**
      * Stops any existing Koin instances and re-starts it based on the new [ClientConfig]
      */
-    fun configure(application: Application, config: ClientConfig) {
+    fun configure(application: Application, config: ClientConfig?) {
         stopKoinIfStarted()
         startedKoinApplication = startKoin {
             androidContext(application)

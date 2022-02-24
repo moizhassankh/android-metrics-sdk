@@ -1,7 +1,6 @@
 package ai.benshi.sdk
 
 import ai.benshi.AbstractContent
-import ai.benshi.AutoViewState
 import ai.benshi.ImpressionThreshold
 import android.app.Activity
 import androidx.recyclerview.widget.RecyclerView
@@ -16,21 +15,18 @@ internal interface PromotedAiSdk {
     fun onCollectionVisible(
         sourceActivity: Activity?,
         collectionViewKey: String,
-        content: List<AbstractContent>,
-        autoViewState: AutoViewState?
+        content: List<AbstractContent>
     )
 
     fun onCollectionUpdated(
         sourceActivity: Activity?,
         collectionViewKey: String,
-        content: List<AbstractContent>,
-        autoViewState: AutoViewState?
+        content: List<AbstractContent>
     )
 
     fun onCollectionHidden(
         sourceActivity: Activity?,
-        collectionViewKey: String,
-        autoViewState: AutoViewState?
+        collectionViewKey: String
     )
 
     fun trackRecyclerView(

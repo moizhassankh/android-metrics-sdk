@@ -22,11 +22,6 @@ internal class MetricsLogger(
 ) {
     private val networkConnectionScope = CoroutineScope(context = Dispatchers.IO)
 
-    private val scheduler = OperationScheduler(
-        intervalMillis = flushIntervalMillis,
-        operation = this::sendCurrentMessages
-    )
-
     private var logMessages = mutableListOf<Message>()
 
     /**
@@ -36,14 +31,12 @@ internal class MetricsLogger(
      */
     fun enqueueMessage(message: Message) {
         logMessages.add(message)
-        scheduler.maybeSchedule()
     }
 
     /**
      * Cancel the batch that is scheduled to be sent and discard the log messages from that batch.
      */
     fun cancelAndDiscardPendingQueue() {
-        scheduler.cancel()
         logMessages.clear()
     }
 
@@ -51,7 +44,6 @@ internal class MetricsLogger(
      * Cancel the scheduled send operation and instead send the batch right now.
      */
     fun cancelAndSendPendingQueue() {
-        scheduler.cancel()
         sendCurrentMessages()
     }
 

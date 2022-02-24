@@ -1,7 +1,6 @@
 package ai.benshi.sdk
 
 import ai.benshi.AbstractContent
-import ai.benshi.AutoViewState
 import ai.benshi.ImpressionThreshold
 import ai.benshi.metrics.MetricsLogger
 import ai.benshi.metrics.usecases.TrackCollectionsUseCase
@@ -25,22 +24,19 @@ internal class DefaultSdk(
         sourceActivity: Activity?,
         collectionViewKey: String,
         content: List<AbstractContent>,
-        autoViewState: AutoViewState?
-    ) = trackCollectionsUseCase.onCollectionVisible(sourceActivity, collectionViewKey, content, autoViewState)
+    ) = trackCollectionsUseCase.onCollectionVisible(sourceActivity, collectionViewKey, content)
 
     override fun onCollectionUpdated(
         sourceActivity: Activity?,
         collectionViewKey: String,
         content: List<AbstractContent>,
-        autoViewState: AutoViewState?
-    ) = trackCollectionsUseCase.onCollectionUpdated(sourceActivity, collectionViewKey, content, autoViewState)
+    ) = trackCollectionsUseCase.onCollectionUpdated(sourceActivity, collectionViewKey, content)
 
     override fun onCollectionHidden(
         sourceActivity: Activity?,
         collectionViewKey: String,
-        autoViewState: AutoViewState?
     ) =
-        trackCollectionsUseCase.onCollectionHidden(sourceActivity, collectionViewKey, autoViewState)
+        trackCollectionsUseCase.onCollectionHidden(sourceActivity, collectionViewKey)
 
     override fun trackRecyclerView(
         recyclerView: RecyclerView,

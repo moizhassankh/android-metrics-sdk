@@ -1,7 +1,6 @@
 package ai.benshi.metrics.usecases
 
 import ai.benshi.ActionData
-import ai.benshi.metrics.InternalActionData
 import ai.benshi.platform.Clock
 import ai.benshi.proto.event.ActionType
 import io.mockk.every

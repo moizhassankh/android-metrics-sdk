@@ -1,12 +1,8 @@
 package ai.benshi.metrics.usecases
 
 import ai.benshi.AbstractContent
-import ai.benshi.AutoViewState
 import ai.benshi.ImpressionData
 import ai.benshi.calculation.AsyncCollectionDiffCalculator
-import ai.benshi.metrics.InternalImpressionData
-import ai.benshi.metrics.id.IdGenerator
-import ai.benshi.platform.Clock
 import android.app.Activity
 import android.util.Log
 import kotlinx.coroutines.Dispatchers
@@ -18,10 +14,7 @@ import kotlinx.coroutines.Dispatchers
  * This class should be retained as a singleton to ensure the collection view keys are properly
  * tracked across their lifecycle.
  */
-internal class TrackCollectionsUseCase(
-    private val clock: Clock,
-    private val idGenerator: IdGenerator,
-) {
+internal class TrackCollectionsUseCase{
     private val collectionDiffers =
         mutableMapOf<String, AsyncCollectionDiffCalculator<AbstractContent>>()
 
@@ -33,8 +26,7 @@ internal class TrackCollectionsUseCase(
         sourceActivity: Activity?,
         collectionViewKey: String,
         visibleContent: List<AbstractContent>,
-        autoViewState: AutoViewState?
-    ) = onCollectionUpdated(sourceActivity, collectionViewKey, visibleContent, autoViewState)
+    ) = onCollectionUpdated(sourceActivity, collectionViewKey, visibleContent)
 
     /**
      * To be called when the collection view with the given [collectionViewKey] has been entirely
@@ -46,9 +38,8 @@ internal class TrackCollectionsUseCase(
     fun onCollectionHidden(
         sourceActivity: Activity?,
         collectionViewKey: String,
-        autoViewState: AutoViewState?
     ) =
-        onCollectionUpdated(sourceActivity, collectionViewKey, emptyList(), autoViewState)
+        onCollectionUpdated(sourceActivity, collectionViewKey, emptyList())
 
     /**
      * To be called when the collection view with the given [collectionViewKey] has a
@@ -71,18 +62,9 @@ internal class TrackCollectionsUseCase(
         sourceActivity: Activity?,
         collectionViewKey: String,
         visibleContent: List<AbstractContent>,
-        autoViewState: AutoViewState?
     ) {
 
         if (visibleContent.isEmpty()) onNoContent(collectionViewKey)
-
-        val now = clock.currentTimeMillis
-
-        // Allow manual override of auto-view state
-        val hasSuperimposedViews = when (autoViewState?.hasSuperimposedViews) {
-            null -> sourceActivity?.hasWindowFocus() == false
-            else -> autoViewState.hasSuperimposedViews
-        }
 
         val differ = collectionDiffers.getOrPut(collectionViewKey) {
             AsyncCollectionDiffCalculator(
@@ -95,8 +77,7 @@ internal class TrackCollectionsUseCase(
             newBaseline = visibleContent,
             onResult = { newDiff ->
                 onNewDiff(
-                    originalImpressionTime = now,
-                    originalHasSuperimposedViews = hasSuperimposedViews,
+                    originalImpressionTime = System.currentTimeMillis(),
                     result = newDiff
                 )
             }
@@ -111,13 +92,11 @@ internal class TrackCollectionsUseCase(
 
     private fun onNewDiff(
         originalImpressionTime: Long,
-        originalHasSuperimposedViews: Boolean?,
         result: AsyncCollectionDiffCalculator.DiffResult<AbstractContent>
     ) {
         result.newItems.forEach { newContent ->
             onStartImpression(
                 time = originalImpressionTime,
-                hasSuperimposedViews = originalHasSuperimposedViews,
                 content = newContent
             )
         }
@@ -127,24 +106,16 @@ internal class TrackCollectionsUseCase(
 
     private fun onStartImpression(
         time: Long,
-        hasSuperimposedViews: Boolean?,
         content: AbstractContent
     ) {
-        val impressionId = idGenerator.newId()
 
         val impressionData = ImpressionData.Builder().apply {
             insertionId = content.insertionId
             contentId = content.contentId
         }.build(null)
 
-        val internalImpressionData = InternalImpressionData(
-            time = time,
-            impressionId = impressionId,
-            hasSuperimposedViews = hasSuperimposedViews
-        )
 
         Log.d("impressionData", impressionData.toString())
-//        Log.d("impressionData", internalImpressionData.toString())
 //        logger.enqueueMessage(createImpressionMessage(impressionData, internalImpressionData))
     }
 }

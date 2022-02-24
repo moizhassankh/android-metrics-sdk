@@ -1,6 +1,5 @@
 package ai.benshi.ui.recyclerview
 
-import ai.benshi.platform.Clock
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
  * https://stackoverflow.com/a/59085649
  */
 internal class RowVisibilityCalculator(
-    private val clock: Clock,
+    private val clock: Long,
     private val recyclerView: RecyclerView,
     private val layoutManager: LinearLayoutManager
 ) {
@@ -50,7 +49,7 @@ internal class RowVisibilityCalculator(
             if (!toMap.containsKey(position)) {
                 toMap[position] = RowVisibility(
                     position = position,
-                    visibleSinceMillis = clock.currentTimeMillis,
+                    visibleSinceMillis = System.currentTimeMillis(),
                     percentageVisible = getVisiblePercentageForPosition(position)
                 )
             }

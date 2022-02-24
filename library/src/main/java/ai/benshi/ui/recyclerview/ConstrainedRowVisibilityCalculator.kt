@@ -1,6 +1,5 @@
 package ai.benshi.ui.recyclerview
 
-import ai.benshi.platform.Clock
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -12,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 internal class ConstrainedRowVisibilityCalculator(
     recyclerView: RecyclerView,
     layoutManager: LinearLayoutManager,
-    private val clock: Clock,
+    private val clock: Long,
     private val threshold: VisibilityThreshold
 ) {
     private val rawVisibilityCalculator = RowVisibilityCalculator(
@@ -27,7 +26,7 @@ internal class ConstrainedRowVisibilityCalculator(
         // negative difference between "now" and when the rows became visible.
         val rawVisibilities = rawVisibilityCalculator.calculateRowVisibilities()
 
-        val now = clock.currentTimeMillis
+        val now = System.currentTimeMillis()
 
         return rawVisibilities
             .filter { visibility ->

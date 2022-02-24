@@ -2,7 +2,6 @@ package ai.benshi.metrics.usecases
 
 import ai.benshi.AbstractContent
 import ai.benshi.ImpressionThreshold
-import ai.benshi.platform.Clock
 import ai.benshi.ui.recyclerview.Tracker
 import android.app.Activity
 import android.content.Context
@@ -19,7 +18,6 @@ import androidx.recyclerview.widget.RecyclerView
  * tracked across their lifecycle.
  */
 internal class TrackRecyclerViewUseCase(
-    private val clock: Clock,
     private val coreImpressionsUseCase: TrackCollectionsUseCase
 ) {
     private val currentRecyclerViews = mutableMapOf<String, Tracker<AbstractContent>>()
@@ -48,7 +46,7 @@ internal class TrackRecyclerViewUseCase(
 
         // Re-add a tracker (begins tracking automatically)
         currentRecyclerViews[rvKey] = Tracker(
-            clock = clock,
+            clock = System.currentTimeMillis(),
             recyclerView = recyclerView,
             visibilityThreshold = impressionThreshold,
             currentDataProvider = currentDataProvider,
@@ -67,12 +65,12 @@ internal class TrackRecyclerViewUseCase(
         }else{
             Log.d("impressionData", "Data1")
         }
-        coreImpressionsUseCase.onCollectionUpdated(recyclerView.getActivity(), rvKey, data, null)
+        coreImpressionsUseCase.onCollectionUpdated(recyclerView.getActivity(), rvKey, data)
     }
 
     private fun onRVDetached(recyclerView: RecyclerView, rvKey: String) {
         stopAndRemoveTracking(rvKey)
-        coreImpressionsUseCase.onCollectionHidden(recyclerView.getActivity(), rvKey, null)
+        coreImpressionsUseCase.onCollectionHidden(recyclerView.getActivity(), rvKey)
     }
 
     private fun stopAndRemoveTracking(recyclerViewKey: String) =

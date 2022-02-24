@@ -65,8 +65,7 @@ object PromotedAi {
         sourceActivity: Activity?,
         collectionViewKey: String,
         content: List<AbstractContent>,
-        autoViewState: AutoViewState? = null
-    ) = sdk.onCollectionVisible(sourceActivity, collectionViewKey, content, autoViewState)
+    ) = sdk.onCollectionVisible(sourceActivity, collectionViewKey, content)
 
     /**
      * @see [PromotedAiSdk.onCollectionUpdated]
@@ -76,8 +75,7 @@ object PromotedAi {
         sourceActivity: Activity?,
         collectionViewKey: String,
         content: List<AbstractContent>,
-        autoViewState: AutoViewState? = null
-    ) = sdk.onCollectionUpdated(sourceActivity, collectionViewKey, content, autoViewState)
+    ) = sdk.onCollectionUpdated(sourceActivity, collectionViewKey, content)
 
     /**
      * @see [PromotedAiSdk.onCollectionHidden]
@@ -86,8 +84,7 @@ object PromotedAi {
     fun onCollectionHidden(
         sourceActivity: Activity?,
         collectionViewKey: String,
-        autoViewState: AutoViewState? = null
-    ) = sdk.onCollectionHidden(sourceActivity, collectionViewKey, autoViewState)
+    ) = sdk.onCollectionHidden(sourceActivity, collectionViewKey)
 
     /**
      * @see [PromotedAiSdk.trackRecyclerView]
