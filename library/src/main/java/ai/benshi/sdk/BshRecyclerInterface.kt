@@ -1,7 +1,7 @@
 package ai.benshi.sdk
 
 import ai.benshi.AbstractContent
-import ai.benshi.ImpressionThreshold
+import ai.benshi.ui.ImpressionThreshold
 import android.app.Activity
 import androidx.recyclerview.widget.RecyclerView
 
@@ -9,8 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
  * The public-facing API for interacting with Promoted.Ai. Instances are managed internally by
  * the SDK.
  */
-@Suppress("TooManyFunctions")
-internal interface PromotedAiSdk {
+internal interface BshRecyclerInterface {
 
     fun onCollectionVisible(
         sourceActivity: Activity?,

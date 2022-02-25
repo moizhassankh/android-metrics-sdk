@@ -1,21 +1,21 @@
 package ai.benshi.sdk
 
 import ai.benshi.AbstractContent
-import ai.benshi.ImpressionThreshold
 import ai.benshi.trackers.TrackCollectionsUseCase
 import ai.benshi.trackers.TrackRecyclerViewUseCase
+import ai.benshi.ui.ImpressionThreshold
 import android.app.Activity
 import androidx.recyclerview.widget.RecyclerView
 
 /**
- * Default implementation of the [PromotedAiSdk] interface, which delegates each call to its
+ * Default implementation of the [BshRecyclerInterface] interface, which delegates each call to its
  * appropriate underlying use case. Calls to [shutdown] are delegated directly to the [logger].
  */
 @Suppress("TooManyFunctions", "LongParameterList")
 internal class DefaultSdk(
     private val trackCollectionsUseCase: TrackCollectionsUseCase,
     private val trackRecyclerViewUseCase: TrackRecyclerViewUseCase,
-) : PromotedAiSdk {
+) : BshRecyclerInterface {
 
 
     override fun onCollectionVisible(

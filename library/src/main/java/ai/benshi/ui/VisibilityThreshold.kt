@@ -1,7 +1,5 @@
 package ai.benshi.ui
 
-import ai.benshi.ImpressionThreshold
-
 /**
  * Internal type-alias used to distinguish between the Android view layer semantics of when an RV
  * row is considered visible, versus the Promoted.Ai semantics of when an impression is considered

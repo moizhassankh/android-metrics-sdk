@@ -1,16 +1,16 @@
 package ai.benshi.sdk
 
 import ai.benshi.AbstractContent
-import ai.benshi.ImpressionThreshold
+import ai.benshi.ui.ImpressionThreshold
 import android.app.Activity
 import androidx.recyclerview.widget.RecyclerView
 
 /**
- * Non-operational implementation of the [PromotedAiSdk] interface; used when
+ * Non-operational implementation of the [BshRecyclerInterface] interface; used when
  * [ClientConfig.loggingEnabled] is set to false, or when the SDK has not yet been initialized.
  */
 @Suppress("TooManyFunctions", "EmptyFunctionBlock")
-internal class NoOpSdk : PromotedAiSdk {
+internal class NoOpSdk : BshRecyclerInterface {
 
 
     override fun onCollectionVisible(

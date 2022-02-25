@@ -1,6 +1,7 @@
 package ai.benshi
 
-import ai.benshi.sdk.PromotedAiSdk
+import ai.benshi.sdk.BshRecyclerInterface
+import ai.benshi.ui.ImpressionThreshold
 import androidx.recyclerview.widget.RecyclerView
 
 /**
@@ -8,11 +9,11 @@ import androidx.recyclerview.widget.RecyclerView
  * [BshScroll.buildRecyclerViewTracking], so that users of the library can dynamically configure
  * and initialize impression tracking of a RecyclerView.
  *
- * While this is supported for Kotlin users, the [PromotedAiSdk.trackRecyclerView]
+ * While this is supported for Kotlin users, the [BshRecyclerInterface.trackRecyclerView]
  * function is recommended.
  */
 class RecyclerViewTrackingBuilder internal constructor(
-    private val sdk: PromotedAiSdk
+    private val sdk: BshRecyclerInterface
 ) {
     /**
      * Represents some class or object that can, on-demand, provide the latest list of [AbstractContent]

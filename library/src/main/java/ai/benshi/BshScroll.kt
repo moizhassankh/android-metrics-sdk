@@ -1,7 +1,8 @@
 package ai.benshi
 
-import ai.benshi.sdk.PromotedAiSdk
+import ai.benshi.sdk.BshRecyclerInterface
 import ai.benshi.sdk.SdkManager
+import ai.benshi.ui.ImpressionThreshold
 import android.app.Activity
 import android.app.Application
 import androidx.recyclerview.widget.RecyclerView
@@ -44,7 +45,7 @@ object BshScroll {
         manager.configure(application, config)
 
     /**
-     * @see [PromotedAiSdk.onCollectionVisible]
+     * @see [BshRecyclerInterface.onCollectionVisible]
      */
     @JvmStatic
     fun onCollectionVisible(
@@ -54,7 +55,7 @@ object BshScroll {
     ) = sdk.onCollectionVisible(sourceActivity, collectionViewKey, content)
 
     /**
-     * @see [PromotedAiSdk.onCollectionUpdated]
+     * @see [BshRecyclerInterface.onCollectionUpdated]
      */
     @JvmStatic
     fun onCollectionUpdated(
@@ -64,7 +65,7 @@ object BshScroll {
     ) = sdk.onCollectionUpdated(sourceActivity, collectionViewKey, content)
 
     /**
-     * @see [PromotedAiSdk.onCollectionHidden]
+     * @see [BshRecyclerInterface.onCollectionHidden]
      */
     @JvmStatic
     fun onCollectionHidden(
@@ -73,7 +74,7 @@ object BshScroll {
     ) = sdk.onCollectionHidden(sourceActivity, collectionViewKey)
 
     /**
-     * @see [PromotedAiSdk.trackRecyclerView]
+     * @see [BshRecyclerInterface.trackRecyclerView]
      */
     @JvmStatic
     fun trackRecyclerView(
@@ -83,7 +84,7 @@ object BshScroll {
     ) = sdk.trackRecyclerView(recyclerView, currentDataProvider, impressionThresholdBlock)
 
     /**
-     * @see [PromotedAiSdk.trackRecyclerView]
+     * @see [BshRecyclerInterface.trackRecyclerView]
      */
     @JvmStatic
     fun trackRecyclerView(

@@ -7,12 +7,12 @@ import android.app.Application
 import org.koin.core.component.get
 
 /**
- * Allows for the proper creation, configuration, and termination of a [PromotedAiSdk]
- * instance. This class ensures that an instance of [PromotedAiSdk] is able to be initialized with
+ * Allows for the proper creation, configuration, and termination of a [BshRecyclerInterface]
+ * instance. This class ensures that an instance of [BshRecyclerInterface] is able to be initialized with
  * a [ClientConfig], reconfigured at any point, and also shut down at any point by the user of
- * [PromotedAiSdk]. It ensures that when a [PromotedAiSdk] is initialized or reconfigured, its
+ * [BshRecyclerInterface]. It ensures that when a [BshRecyclerInterface] is initialized or reconfigured, its
  * corresponding objects/dependencies are re-created per the new [ClientConfig]. It also ensures
- * that when [PromotedAiSdk] is shut down, its corresponding objects/dependencies are released for
+ * that when [BshRecyclerInterface] is shut down, its corresponding objects/dependencies are released for
  * garbage collection.
  */
 internal open class SdkManager internal constructor(
@@ -20,13 +20,13 @@ internal open class SdkManager internal constructor(
 ) {
     internal sealed class SdkState {
         object NotConfigured : SdkState()
-        data class Ready(val sdk: PromotedAiSdk) : SdkState()
+        data class Ready(val sdk: BshRecyclerInterface) : SdkState()
         object Shutdown : SdkState()
     }
 
     private var sdkState: SdkState = SdkState.NotConfigured
 
-    internal val sdkInstance: PromotedAiSdk
+    internal val sdkInstance: BshRecyclerInterface
         get() = when (val currentState = sdkState) {
             is SdkState.NotConfigured,
             SdkState.Shutdown -> {
@@ -104,7 +104,7 @@ internal open class SdkManager internal constructor(
         // Regardless of what PromotedAi type Koin might return, we'll always override that with a
         // no-op version if logging is disabled via config. This is to prevent such critical
         // business logic from residing in the DI configuration
-        val newPromotedAi: PromotedAiSdk =  configurableKoinComponent.get()
+        val newPromotedAi: BshRecyclerInterface =  configurableKoinComponent.get()
 
         this.sdkState = SdkState.Ready(sdk = newPromotedAi)
     }

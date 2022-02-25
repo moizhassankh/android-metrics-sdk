@@ -1,4 +1,4 @@
-package ai.benshi
+package ai.benshi.ui
 
 private const val FULL_VISIBILITY = 100.0
 

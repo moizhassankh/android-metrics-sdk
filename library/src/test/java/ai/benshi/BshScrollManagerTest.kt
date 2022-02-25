@@ -3,7 +3,7 @@ package ai.benshi
 import ai.benshi.config.NoOpRemoteConfigService
 import ai.benshi.di.ConfigurableKoinComponent
 import ai.benshi.sdk.NoOpSdk
-import ai.benshi.sdk.PromotedAiSdk
+import ai.benshi.sdk.BshRecyclerInterface
 import ai.benshi.sdk.SdkManager
 import android.app.Application
 import io.mockk.called
@@ -53,14 +53,14 @@ class BshScrollManagerTest {
         // but will always return a second one on subsequent injects,
         // and that the PromotedAiManager has been configured once
         var creationCount = 0
-        val firstPromotedAi: PromotedAiSdk = mockk(relaxUnitFun = true)
-        val secondPromotedAi: PromotedAiSdk = mockk(relaxUnitFun = true)
+        val firstPromotedAi: BshRecyclerInterface = mockk(relaxUnitFun = true)
+        val secondPromotedAi: BshRecyclerInterface = mockk(relaxUnitFun = true)
         val manager = object : SdkManager(
             updatedConfigUseCase = updatedConfigUseCase,
             configurableKoinComponent = object : ConfigurableKoinComponent() {
                 override fun buildModules(config: ClientConfig): List<Module> = listOf(
                     module {
-                        factory<PromotedAiSdk> {
+                        factory<BshRecyclerInterface> {
                             creationCount++
                             if (creationCount == 1) firstPromotedAi
                             else secondPromotedAi
@@ -88,14 +88,14 @@ class BshScrollManagerTest {
         // but will always return a second one on subsequent injects,
         // and that the PromotedAiManager has been configured once
         var creationCount = 0
-        val firstPromotedAi: PromotedAiSdk = mockk(relaxUnitFun = true)
-        val secondPromotedAi: PromotedAiSdk = mockk(relaxUnitFun = true)
+        val firstPromotedAi: BshRecyclerInterface = mockk(relaxUnitFun = true)
+        val secondPromotedAi: BshRecyclerInterface = mockk(relaxUnitFun = true)
         val manager = object : SdkManager(
             updatedConfigUseCase = updatedConfigUseCase,
             configurableKoinComponent = object : ConfigurableKoinComponent() {
                 override fun buildModules(config: ClientConfig): List<Module> = listOf(
                     module {
-                        factory<PromotedAiSdk> {
+                        factory<BshRecyclerInterface> {
                             creationCount++
                             if (creationCount == 1) firstPromotedAi
                             else secondPromotedAi
@@ -118,13 +118,13 @@ class BshScrollManagerTest {
         // Given a PromotedAiManager that is configured to return one PromotedAi initially,
         // but will always return a second one on subsequent injects,
         // and that the PromotedAiManager has been configured once
-        val promotedAi: PromotedAiSdk = mockk(relaxUnitFun = true)
+        val promotedAi: BshRecyclerInterface = mockk(relaxUnitFun = true)
         val koin = object : ConfigurableKoinComponent() {
             fun startedKoinApp() = super.startedKoinApplication
             override fun buildModules(config: ClientConfig): List<Module> = listOf(
                 module {
                     single { config }
-                    factory<PromotedAiSdk> { promotedAi }
+                    factory<BshRecyclerInterface> { promotedAi }
                 }
             )
         }

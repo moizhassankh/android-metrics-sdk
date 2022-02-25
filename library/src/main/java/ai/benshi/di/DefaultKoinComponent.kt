@@ -4,7 +4,7 @@ import ai.benshi.ClientConfig
 import ai.benshi.trackers.TrackCollectionsUseCase
 import ai.benshi.trackers.TrackRecyclerViewUseCase
 import ai.benshi.sdk.DefaultSdk
-import ai.benshi.sdk.PromotedAiSdk
+import ai.benshi.sdk.BshRecyclerInterface
 import android.content.Context
 import android.content.SharedPreferences
 import org.koin.core.module.Module
@@ -18,7 +18,7 @@ internal object DefaultKoinComponent : ConfigurableKoinComponent() {
     override fun buildModules(config: ClientConfig?): List<Module> = listOf(
         module {
             single { config }
-            single<PromotedAiSdk> {
+            single<BshRecyclerInterface> {
                 DefaultSdk(
                     get(),
                     get()
