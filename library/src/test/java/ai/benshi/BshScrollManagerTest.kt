@@ -18,7 +18,7 @@ import org.koin.core.context.stopKoin
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
-class PromotedAiManagerTest {
+class BshScrollManagerTest {
     // Ensure RemoteConfig is treated as no-op; otherwise it might exist on the testing classpath
     // and result in actual attempts to access FirebaseRemoteConfig from the testing environment.
     private val updatedConfigUseCase: UpdateClientConfigUseCase = UpdateClientConfigUseCase(

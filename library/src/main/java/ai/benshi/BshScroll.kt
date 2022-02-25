@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
  * here without worrying about underlying dependencies / classes / object management.
  */
 @Suppress("TooManyFunctions")
-object PromotedAi {
+object BshScroll {
     private val manager = SdkManager()
     private val sdk get() = manager.sdkInstance
 

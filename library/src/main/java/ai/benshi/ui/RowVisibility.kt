@@ -1,4 +1,4 @@
-package ai.benshi.ui.recyclerview
+package ai.benshi.ui
 
 /**
  * A singular representation of a row being visible within a RecyclerView.

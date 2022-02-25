@@ -1,4 +1,4 @@
-package ai.benshi.ui.recyclerview
+package ai.benshi.ui
 
 import android.graphics.Rect
 import android.view.View

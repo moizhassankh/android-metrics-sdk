@@ -2,7 +2,7 @@ package ai.benshi.trackers
 
 import ai.benshi.AbstractContent
 import ai.benshi.ImpressionThreshold
-import ai.benshi.ui.recyclerview.Tracker
+import ai.benshi.ui.Tracker
 import android.app.Activity
 import android.content.Context
 import android.content.ContextWrapper

@@ -1,4 +1,4 @@
-package ai.benshi.ui.recyclerview
+package ai.benshi.ui
 
 import ai.benshi.ImpressionThreshold
 

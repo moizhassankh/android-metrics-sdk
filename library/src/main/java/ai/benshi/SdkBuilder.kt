@@ -4,11 +4,11 @@ import ai.benshi.sdk.SdkManager
 import android.app.Application
 
 /**
- * This class is primarily to provide an easy-to-use Java API, via [PromotedAi.buildConfiguration],
+ * This class is primarily to provide an easy-to-use Java API, via [BshScroll.buildConfiguration],
  * so that users of the library can dynamically set whichever [ClientConfig] options they want to
  * set.
  *
- * While this is supported for Kotlin users, the [PromotedAi.initialize]/[PromotedAi.configure]
+ * While this is supported for Kotlin users, the [BshScroll.initialize]/[BshScroll.configure]
  * with the [ClientConfig.Builder] configuration block is recommended.
  */
 class SdkBuilder internal constructor(
@@ -54,12 +54,12 @@ class SdkBuilder internal constructor(
         apply { clientConfigBuilder.xrayEnabled = enabled }
 
     /**
-     * @see [PromotedAi.initialize]
+     * @see [BshScroll.initialize]
      */
     fun initialize(application: Application) = configure(application)
 
     /**
-     * @see [PromotedAi.configure]
+     * @see [BshScroll.configure]
      */
     @Suppress("MemberVisibilityCanBePrivate")
     fun configure(application: Application) =

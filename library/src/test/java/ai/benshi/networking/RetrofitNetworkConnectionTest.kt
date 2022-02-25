@@ -1,10 +1,8 @@
 package ai.benshi.networking
 
-import ai.benshi.PromotedApiRequest
 import ai.benshi.http.RetrofitPromotedApi
 import ai.benshi.mockkRelaxedUnit
 import io.mockk.CapturingSlot
-import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.verify

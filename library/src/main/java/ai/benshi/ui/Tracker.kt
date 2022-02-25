@@ -1,4 +1,4 @@
-package ai.benshi.ui.recyclerview
+package ai.benshi.ui
 
 import androidx.core.view.doOnDetach
 import androidx.core.view.doOnLayout

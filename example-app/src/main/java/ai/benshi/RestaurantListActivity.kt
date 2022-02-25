@@ -51,7 +51,7 @@ class RestaurantListActivity : AppCompatActivity() {
     private fun setupRecyclerView(recyclerView: RecyclerView) {
         recyclerView.adapter = SimpleItemRecyclerViewAdapter(this, DummyContent.ITEMS, twoPane)
 
-        PromotedAi.trackRecyclerView(
+        BshScroll.trackRecyclerView(
             recyclerView = recyclerView,
             currentDataProvider = {
                 DummyContent.ITEMS.map {
@@ -64,7 +64,7 @@ class RestaurantListActivity : AppCompatActivity() {
         ) {
             percentageThreshold = 20.0
             // Uncomment to give a time threshold for impressions
-            timeThresholdMillis = 1000L
+            timeThresholdMillis = 700L
         }
     }
 
@@ -94,10 +94,6 @@ class RestaurantListActivity : AppCompatActivity() {
                 v.context.startActivity(intent)
             }
 
-            // Notify Promoted that an action occurred
-//            PromotedAi.onAction(parentActivity, "open-restaurant", ActionType.CUSTOM_ACTION_TYPE) {
-//                insertionId = item.id
-//            }
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
