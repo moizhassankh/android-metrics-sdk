@@ -64,7 +64,7 @@ class RestaurantListActivity : AppCompatActivity() {
         ) {
             percentageThreshold = 20.0
             // Uncomment to give a time threshold for impressions
-            timeThresholdMillis = 700L
+//            timeThresholdMillis = 1000L
         }
     }
 

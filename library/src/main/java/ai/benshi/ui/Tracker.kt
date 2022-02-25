@@ -62,10 +62,21 @@ internal class Tracker<RowData : Any>(
         }
     }
 
+
+
     private fun createScrollListener(visibleDataCalculator: AsyncVisibleDataCalculator<RowData>) =
         object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                visibleDataCalculator.calculateVisibleData()
+
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                when (newState){
+                    RecyclerView.SCROLL_STATE_IDLE -> {
+                        visibleDataCalculator.calculateVisibleData()
+                    }
+                }
             }
+
+//            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+//                visibleDataCalculator.calculateVisibleData()
+//            }
         }
 }

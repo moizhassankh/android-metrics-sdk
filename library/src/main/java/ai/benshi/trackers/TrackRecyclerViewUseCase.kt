@@ -60,11 +60,6 @@ internal class TrackRecyclerViewUseCase(
         rvKey: String,
         data: List<AbstractContent>
     ) {
-        if(data.isNullOrEmpty()){
-            Log.d("impressionData", "Empty1")
-        }else{
-            Log.d("impressionData", "Data1")
-        }
         coreImpressionsUseCase.onCollectionUpdated(recyclerView.getActivity(), rvKey, data)
     }
 
