@@ -14,8 +14,9 @@
         android:layout_height="250dp"
         android:orientation="vertical">
 
-        <com.flaviofaria.kenburnsview.KenBurnsView
+        <ImageView
             android:id="@+id/image"
+            android:scaleType="centerCrop"
             android:layout_width="match_parent"
             android:layout_height="170dp"
             tools:src="@drawable/welcome_bg" />

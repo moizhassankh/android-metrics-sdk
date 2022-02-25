@@ -9,34 +9,7 @@ data class ClientConfig(
      * Whether to collect metrics. When set to false, the library will operate in a stubbed fashion;
      * meaning, API calls are available to the library user, but nothing will happen.
      */
-    val loggingEnabled: Boolean,
-
-    /**
-     * The URL of the server to receive the metrics
-     */
-    val metricsLoggingUrl: String,
-
-    /**
-     * The API key required to authorize with the server defined by [metricsLoggingUrl]
-     */
-    val metricsLoggingApiKey: String,
-
-    /**
-     * The format of the data to be sent to the server at [metricsLoggingUrl]. Typically
-     * [ClientConfig.MetricsLoggingWireFormat.Binary]
-     */
-    val metricsLoggingWireFormat: MetricsLoggingWireFormat,
-
-    /**
-     * How long the SDK should batch / queue up metrics before sending to the server. Default is
-     * ten seconds.
-     */
-    val loggingFlushIntervalSeconds: Long,
-
-    /**
-     * Whether the SDK should monitor its own performance and log results to the system log.
-     */
-    val xrayEnabled: Boolean,
+    val loggingEnabled: Boolean
 ) {
     enum class MetricsLoggingWireFormat {
         Json,
@@ -47,38 +20,13 @@ data class ClientConfig(
         /**
          * @see [ClientConfig.loggingEnabled]
          */
-        var loggingEnabled: Boolean = true,
-        /**
-         * @see [ClientConfig.metricsLoggingUrl]
-         */
-        var metricsLoggingUrl: String = "",
-        /**
-         * @see [ClientConfig.metricsLoggingApiKey]
-         */
-        var metricsLoggingApiKey: String = "",
-        /**
-         * @see [ClientConfig.metricsLoggingWireFormat]
-         */
-        var metricsLoggingWireFormat: MetricsLoggingWireFormat = MetricsLoggingWireFormat.Binary,
-        /**
-         * @see [ClientConfig.loggingFlushIntervalSeconds]
-         */
-        var loggingFlushIntervalSeconds: Long = 10,
-        /**
-         * @see [ClientConfig.xrayEnabled]
-         */
-        var xrayEnabled: Boolean = false
+        var loggingEnabled: Boolean = true
     ) {
         /**
          * Create a [ClientConfig] object from the current state of this builder.
          */
         fun build() = ClientConfig(
-            loggingEnabled,
-            metricsLoggingUrl,
-            metricsLoggingApiKey,
-            metricsLoggingWireFormat,
-            loggingFlushIntervalSeconds,
-            xrayEnabled
+            loggingEnabled
         )
     }
 }

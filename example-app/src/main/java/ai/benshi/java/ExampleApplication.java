@@ -11,8 +11,6 @@ public class ExampleApplication extends Application {
 
         BshScroll
                 .buildConfiguration()
-                .withMetricsLoggingApiKey("")
-                .withMetricsLoggingUrl("")
                 .initialize(this);
     }
 }

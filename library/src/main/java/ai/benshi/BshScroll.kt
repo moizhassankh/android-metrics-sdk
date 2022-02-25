@@ -15,14 +15,6 @@ object BshScroll {
     private val manager = SdkManager()
     private val sdk get() = manager.sdkInstance
 
-
-    /**
-     * @see [PromotedAiSdk.autoViewId]
-     */
-    @JvmStatic
-    @Deprecated("Auto-view ID will be used")
-    var viewId: String = ""
-
     /**
      * @see [SdkManager.initialize]
      */
@@ -50,12 +42,6 @@ object BshScroll {
     @JvmStatic
     fun configure(application: Application, config: ClientConfig) =
         manager.configure(application, config)
-
-    /**
-     * @see [SdkManager.shutdown]
-     */
-    @JvmStatic
-    fun shutdown() = manager.shutdown()
 
     /**
      * @see [PromotedAiSdk.onCollectionVisible]
